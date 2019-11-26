@@ -1,19 +1,25 @@
-import React from 'react';
+import React, { Component} from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+// import AllBoards from './src/components/Boards/Board';
+import AllBoards from './src/components/AllBoards/AllBoards';
+import db from './data.json';
+import styles from './src/resources/Styles';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Testing!</Text>
-    </View>
-  );
-}
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#1d2938',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+ class App extends Component  {
+  constructor(props) {
+    super(props);
+
+    this.state = {boards: db['boards']}
+  }
+  
+
+  render(){  
+    return (
+      <View style={ styles.body }>
+        <AllBoards boards={this.state.boards}/>
+      </View>
+      );
+    }
+  }
+export default App;
