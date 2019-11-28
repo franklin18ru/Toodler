@@ -22,17 +22,16 @@ render() {
                   props.boards.splice(props.id-1,1);
               },
               text:'Delete',
-            
               type:'delete'
             },
-            {
-              onPress: ()=>{},
-              text:'Edit',
-              backgroundColor:'green',
-              type:'edit'
-            }
-          
-          ]}
+          {
+            onPress: ()=>{},
+            text:'Edit',
+            backgroundColor:'green',
+            type:'edit'
+          }
+         
+        ]}
         >
           <TouchableHighlight onPress={() => this.props.navigation.navigate('Lists', {boardId: board.id})}>
             <Board id={ board.id } name ={ board.name} />
