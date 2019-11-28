@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { TouchableHighlight, View } from 'react-native';
 import Board from '../Board/Board';
-import Scroll from '../Scroll/Scroll';
 import Swipeout from 'react-native-swipeout';
 
 

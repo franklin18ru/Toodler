@@ -5,7 +5,7 @@ export default StyleSheet.create({
         backgroundColor: '#181A24',
         flex: 1,
         flexDirection:'column',
-        justifyContent:'top'
+        
     },
     container: {
         flex: 1,
