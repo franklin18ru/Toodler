@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, Button, TouchableHighlight } from 'react-native';
+import { TouchableHighlight } from 'react-native';
 import Board from '../Board/Board';
-import BoardPage from '../../Views/Lists';
-
+import Scroll from '../Scroll/Scroll';
 
 
 class AllBoards extends Component {
@@ -12,7 +11,7 @@ constructor(props){
 
 render() {
   return (
-    <View>
+    <Scroll>
       { this.props.boards
         .map(board =>(
           <TouchableHighlight onPress={() => this.props.navigation.navigate('Lists', {boardId: board.id})}>
@@ -20,7 +19,7 @@ render() {
           </TouchableHighlight>
         ))
       }
-    </View>
+    </Scroll>
   );
 }
 }
