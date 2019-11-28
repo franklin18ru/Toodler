@@ -2,23 +2,23 @@ import React, { Component} from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 import db from '../resources/data.json';
 import styles from '../resources/Styles';
-import AllLists from '../components/AllLists/AllLists';
+import AllTasks from '../components/AllTasks/AllTasks';
 
-class Lists extends Component {
+class Tasks extends Component {
     constructor(props) {
         super(props);
-        this.state = {lists: db['lists']}
+        this.state = {tasks: db['tasks']}
         }
         
         render(){  
             const {navigation} = this.props
         return (
             <View style={ styles.body }>
-                <AllLists lists={ this.state.lists } boardId={ navigation.getParam('boardId') } navigation={ this.props.navigation }/>
+                <AllTasks tasks={this.state.tasks} listId={navigation.getParam('listId')}/>
             </View>
         
             );
         }
         }
 
-    export default Lists;
+    export default Tasks;
