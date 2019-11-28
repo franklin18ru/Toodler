@@ -5,10 +5,7 @@ export default StyleSheet.create({
         backgroundColor: '#181A24',
         flex: 1,
         flexDirection:'column',
-        justifyContent:'top'
+        justifyContent:'center'
     },
-    container: {
-        flex: 1,
-    }
 
 });
