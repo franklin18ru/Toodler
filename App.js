@@ -1,25 +1,10 @@
 import React, { Component} from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-// import AllBoards from './src/components/Boards/Board';
-import AllBoards from './src/components/AllBoards/AllBoards';
-import db from './data.json';
-import styles from './src/resources/Styles';
+import { StyleSheet, Text, View, Button } from 'react-native';
+import BoardScreen from './src/Views/Boards';
+import AppContainer from './src/routes/index';
 
-
- class App extends Component  {
-  constructor(props) {
-    super(props);
-
-    this.state = {boards: db['boards']}
+export default class App extends React.Component {
+  render() {
+    return <AppContainer />;
   }
-  
-
-  render(){  
-    return (
-      <View style={ styles.body }>
-        <AllBoards boards={this.state.boards}/>
-      </View>
-      );
-    }
-  }
-export default App;
+}

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, Button } from 'react-native';
+import { Text, View, StyleSheet, Button, TouchableHighlight } from 'react-native';
 import Board from '../Board/Board';
+import BoardPage from '../../Views/Lists';
 
 
 
@@ -13,8 +14,10 @@ render() {
   return (
     <View>
       { this.props.boards
-        .map(board => (
-          <Board key={ board.id } name ={ board.name} />
+        .map(board =>(
+          <TouchableHighlight onPress={() => this.props.navigation.navigate('Lists', {boardId: board.id})}>
+            <Board id={ board.id } name ={ board.name} />
+          </TouchableHighlight>
         ))
       }
     </View>
