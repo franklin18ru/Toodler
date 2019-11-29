@@ -7,8 +7,12 @@ import AllTasks from '../components/AllTasks/AllTasks';
 class Tasks extends Component {
     constructor(props) {
         super(props);
-        this.state = {tasks: db['tasks']}
+        const {navigation} = this.props
+        
+        this.state = {tasks: navigation.getParam('tasks')}
         }
+
+        
         
         render(){  
             const {navigation} = this.props
