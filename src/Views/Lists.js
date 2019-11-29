@@ -10,7 +10,7 @@ class Lists extends Component {
         const {navigation} = this.props
         this.handler = this.handler.bind(this);
         
-        this.state = {lists: navigation.getParam('lists')}
+        this.state = {lists: navigation.getParam('lists'), tasks: navigation.getParam('tasks')}
         }
 
         handler(id) {
@@ -27,11 +27,28 @@ class Lists extends Component {
                 }
         
             }
+
+            let newTask = this.state.tasks
+
+            for (var i = 0; i < newTask.length; i++) {
+                var obj = newTask[i];
+                
+                if (obj.listId == id) {
+                  let index = newTask.indexOf(obj);
+                  i--;
+                  newTask.splice(index, 1);
+                  
+                }
+                
+              }
             
             this.setState({
-                lists: newList
+                lists: newList,
+                tasks: newTask
             });
-            // Add delete to tasks
+
+            console.log(this.state.tasks);
+            
           }
         
         render(){  

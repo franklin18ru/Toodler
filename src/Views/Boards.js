@@ -24,6 +24,8 @@ class Boards extends Component {
     }
 
     handler(id) {
+      
+
       let indexOfBoard = null;
       let newBoard = this.state.boards;
       for (var i = 0; i < newBoard.length; i++) {
@@ -40,13 +42,28 @@ class Boards extends Component {
       
 
       let newLists = this.state.lists
+      let newTask = this.state.tasks
       
       for (var i = 0; i < newLists.length; i++) {
         var obj = newLists[i];
         
         if (obj.boardId == id) {
           let index = newLists.indexOf(obj);
-          /* add delete to tasks here */
+          
+          for (var x = 0; x < newTask.length; x++) {
+            var obj2 = newTask[x];
+            
+            if (obj2.listId == obj.id) {
+              let index = newTask.indexOf(obj2);
+              x--;
+              newTask.splice(index, 1);
+              
+            }
+            
+          }
+
+          
+          i--;
           newLists.splice(index, 1);
           
         }
@@ -54,8 +71,11 @@ class Boards extends Component {
       }
       this.setState({
         boards: newBoard,
-        lists: newLists
+        lists: newLists,
+        tasks: newTask
       });
+
+      
     }
     
     render(){ 

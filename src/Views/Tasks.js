@@ -15,11 +15,23 @@ class Tasks extends Component {
         handler(id) {
 
             let newTask = this.state.tasks;
-            newTask.splice(id-1,1)
+
+            for (var i = 0; i < newTask.length; i++) {
+                var obj = newTask[i];
+        
+                if (obj.id == id) {
+                    let index = newTask.indexOf(obj);
+                    newTask.splice(index,1);
+                    break
+                }
+        
+            }
+
             this.setState({
                 tasks: newTask
             });
-            // Add delete to lists and tasks
+            
+            console.log(this.state.tasks);
           }
         
         render(){  
