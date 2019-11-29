@@ -41,8 +41,7 @@ export default StyleSheet.create({
     checkbox: {
         flex: 1,
         paddingRight: 20,
-        color: 'white',
-        alignSelf: 'left'
+        color: 'white'
     }
 
 

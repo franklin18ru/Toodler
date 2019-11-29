@@ -6,9 +6,9 @@ import styles from '../resources/Styles';
 import BoardPage from './Lists';
 import Container from '../components/Scroll/Scroll';
 import { Icon } from 'react-native-elements';
-import CreateBoard from '../components/CreateBoard/CreateBoard'
 import Board from '../components/Board/Board';
-import AddModal from '../components/AddModal/AddModal';
+import AddModal from '../components/AddModal/AddBoardModal';
+import { takePhoto } from '../components/TakePhoto/TakePhoto2';
 
 
 
@@ -24,7 +24,10 @@ class Boards extends Component {
       lists: db['lists'],
       tasks: db['tasks'],
       screenHeight: 0,
-      isAddModalOpen: false
+      isAddModalOpen: false,
+      newBoardName: '',
+      newBoardPhoto: ''
+      
 
 
     }
@@ -53,71 +56,105 @@ class Boards extends Component {
 
   
 
-  create(n,p,b){
-    const newBoard={
-      'name':n,
-      'thumbnailPhoto':p
-    };
-    b.push(newBoard);
-  }
+  
 
   onContentSizeChange = (contentWidth, contentHeight) => {
     this.setState({ screenHeight: contentHeight });
   };
 
 
+
+  inputHandler(name, value){
+    this.setState({[name]: value});
+    
+  }
+
+  async getThumbnail(){
+    const photo = await takePhoto();
+    this.setState({'newBoardPhoto':photo});
+    return photo
+  }
+
+    getHighestId(){
+      let id = -1;
+      const boards = this.state.boards;
+      for(var i=0; i<boards.length; i++){
+        obj = boards[i]
+        if(obj.id > id){
+          id = obj.id
+        }
+      }
+      return id
+    }
+    create(photo){
+      const name = this.state.newBoardName;
+      let boards = this.state.boards;
+      const nextId = this.getHighestId()+1;
+      const newBoard = {
+        id:nextId,
+        name:name,
+        thumbnailPhoto: photo
+      };
+      boards.push(newBoard);
+      this.setState({isAddModalOpen:false, boards: boards});
+    }
+
+
+
+
+
+
     handler(id) {
       
-
-      let indexOfBoard = null;
-      let newBoard = this.state.boards;
-      for (var i = 0; i < newBoard.length; i++) {
-        var obj = newBoard[i];
-        
-        if (obj.id == id) {
-          indexOfBoard = newBoard.indexOf(obj);
-          newBoard.splice(indexOfBoard,1);
-          break
-        }
-        
-      }
-    
-      
-
-      let newLists = this.state.lists
-      let newTask = this.state.tasks
-      
-      for (var i = 0; i < newLists.length; i++) {
-        var obj = newLists[i];
-        
-        if (obj.boardId == id) {
-          let index = newLists.indexOf(obj);
+        let indexOfBoard = null;
+        let newBoard = this.state.boards;
+        for (var i = 0; i < newBoard.length; i++) {
+          var obj = newBoard[i];
           
-          for (var x = 0; x < newTask.length; x++) {
-            var obj2 = newTask[x];
+          if (obj.id == id) {
+            indexOfBoard = newBoard.indexOf(obj);
+            newBoard.splice(indexOfBoard,1);
+            break
+          }
+          
+        }
+      
+        
+
+        let newLists = this.state.lists
+        let newTask = this.state.tasks
+        
+        for (var i = 0; i < newLists.length; i++) {
+          var obj = newLists[i];
+          
+          if (obj.boardId == id) {
+            let index = newLists.indexOf(obj);
             
-            if (obj2.listId == obj.id) {
-              let index = newTask.indexOf(obj2);
-              x--;
-              newTask.splice(index, 1);
+            for (var x = 0; x < newTask.length; x++) {
+              var obj2 = newTask[x];
+              
+              if (obj2.listId == obj.id) {
+                let index = newTask.indexOf(obj2);
+                x--;
+                newTask.splice(index, 1);
+                
+              }
               
             }
+
+            
+            i--;
+            newLists.splice(index, 1);
             
           }
-
-          
-          i--;
-          newLists.splice(index, 1);
           
         }
-        
-      }
-      this.setState({
-        boards: newBoard,
-        lists: newLists,
-        tasks: newTask
-      });
-
+        this.setState({
+          boards: newBoard,
+          lists: newLists,
+          tasks: newTask
+        });
+      
       
     }
 
@@ -143,6 +180,11 @@ class Boards extends Component {
           <AddModal
             isOpen={this.state.isAddModalOpen}
             closeModal={() => this.setState({ isAddModalOpen: false})}
+            action={(photo) => { this.create(photo) }}
+            name={this.state.newBoardName}
+            photo={this.state.newBoardPhoto}
+            takePhoto={()=>{ return this.getThumbnail() }}
+            inputHandler={(name,value)=>{ this.inputHandler(name,value)}}
             />
       </SafeAreaView>
         );
