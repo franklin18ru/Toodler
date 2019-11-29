@@ -4,7 +4,7 @@ import styles from '../Board/BoardStyles';
 
 
 const List = props => (
-        <View style={ styles.boards }>
+        <View style={ styles.boards}>
             <Text style={ styles.text }>{ props.name }</Text>
         </View>
 
