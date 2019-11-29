@@ -37,13 +37,4 @@ export default StyleSheet.create({
         paddingRight:50, 
         
     },
-
-    checkbox: {
-        flex: 1,
-        paddingRight: 20,
-        color: 'white',
-        alignSelf: 'left'
-    }
-
-
 });
