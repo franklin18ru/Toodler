@@ -1,5 +1,5 @@
 import React, { Component} from 'react';
-import { SafeAreaView, View, Text, ScrollView, Dimensions, Button} from "react-native";
+import { SafeAreaView, View, Text, ScrollView, Dimensions, Button, StatusBar} from "react-native";
 import AllBoards from '../components/AllBoards/AllBoards';
 import db from '../resources/data.json';
 import styles from '../resources/Styles';
@@ -163,9 +163,8 @@ class Boards extends Component {
       const scrollEnabled = this.state.screenHeight > height; 
       const {isAddModalOpen} = this.state
       return (
-        <SafeAreaView style={styles.container}>
+        <SafeAreaView style={styles.container, { flex: 1, backgroundColor: '#181A24' }}>
 
-        {/* <StatusBar barStyle="light-content" backgroundColor="#468189" /> */}
         <ScrollView
           style={styles.body}
           contentContainerStyle={styles.scrollview}
