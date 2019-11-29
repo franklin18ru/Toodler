@@ -137,6 +137,7 @@ class Lists extends Component {
                 action={(color) => { this.create(color) }}
                 color={this.state.newListColor}
                 selectedColor={()=>{return this.state.newListColor}}
+                // fix when this component is unmounted
                 changeColor ={(color)=>{return this.changeColor(color)}}
             />
             </View>
