@@ -11,6 +11,10 @@ class AllTasks extends Component {
 constructor(props){
   super(props);
   this.handler = this.handler.bind(this);
+  this.state = {
+    tasks: this.props.tasks
+  
+  }
 }
 handler(id){
   let newTask = this.state.tasks
@@ -23,6 +27,8 @@ handler(id){
   }
   this.setState({tasks: newTask})
 }
+
+
 
 render() {
   return (
