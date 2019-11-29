@@ -10,6 +10,18 @@ class AllTasks extends Component {
   
 constructor(props){
   super(props);
+  this.handler = this.handler.bind(this);
+}
+handler(id){
+  let newTask = this.state.tasks
+  for(var i = 0; i< newTask.length; i++){
+    obj = newTask[i]
+    if(obj.id == id){
+      obj.isFinished = obj.isFinished == true ? false : true;
+      break
+    }
+  }
+  this.setState({tasks: newTask})
 }
 
 render() {
@@ -27,7 +39,6 @@ render() {
                       props.boards.splice(props.id-1,1);
                   },
                   text:'Delete',
-                
                   type:'delete'
                 },
                 {
@@ -39,7 +50,7 @@ render() {
               
               ]}
               >
-            <Task id={ task.id } name ={ task.name } description={task.description} isFinished={task.isFinished}/>
+            <Task id={ task.id } name ={ task.name } action={this.handler} description={task.description} isFinished={task.isFinished}/>
            </Swipeout>
           </React.Fragment>
           )

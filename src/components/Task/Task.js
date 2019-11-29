@@ -1,17 +1,36 @@
 import React, { Component } from 'react';
-import {View, Text, Button} from 'react-native';
+import {View, Text } from 'react-native';
 import styles from '../Board/BoardStyles';
+import taskStyle from './TaskStyle';
+import CheckBox from 'react-native-check-box';
 
 
-const List = props => (
-        <View style={ styles.boards }>
-            <Text style={ styles.text }>{ props.name }</Text>
-            <Text style={ styles.text }>{ props.description}</Text>
-            <Text style={ styles.text }>{ props.isFinished}</Text>
+
+const Task = props => (
+        <View style={ [(props.isFinished) ? taskStyle.finish : taskStyle.boards] }>
+            {/* <CheckBox 
+            style={{flex: 1, padding: 10}}
+            onClick={()=>{
+                {console.log(props.isFinished)}
+                props.isFinished = props.isFinished == true ? false : true;
+                
+              }}
+              checked={props.isFinished}
+              isFinished={props.isFinished} /> */}
+              <CheckBox style={ taskStyle.checkbox }
+                title='Click Here'
+                checked={props.isFinished}
+                onClick={()=>{{props.action(props.id)}}}
+                />
+            <Text style={ taskStyle.title }>{ props.name }</Text>
+            <Text style={ taskStyle.description }>{ props.description}</Text>
+           
+            
         </View>
 
+        
+
+       
 )
-
-
-  
-export default List
+   
+export default Task
