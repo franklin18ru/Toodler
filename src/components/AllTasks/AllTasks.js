@@ -23,14 +23,6 @@ render() {
             <Swipeout autoClose={true}
               right= {[
                 {
-                  onPress: ()=>{
-                    this.props.action(task.id)
-                  },
-                  text:'Delete',
-                
-                  type:'delete'
-                },
-                {
                   onPress: ()=>{},
                   text:'Edit',
                   backgroundColor:'green',
