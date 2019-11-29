@@ -19,7 +19,7 @@ render() {
           right= {[
             {
               onPress: ()=>{
-                  props.boards.splice(props.id-1,1);
+                  this.props.action(board.id)
               },
               text:'Delete',
             
@@ -34,7 +34,7 @@ render() {
           
           ]}
         >
-          <TouchableHighlight onPress={() => this.props.navigation.navigate('Lists', {boardId: board.id})}>
+          <TouchableHighlight onPress={() => this.props.navigation.navigate('Lists', {boardId: board.id, lists: this.props.lists, tasks: this.props.tasks})}>
             <Board id={ board.id } name ={ board.name} />
           </TouchableHighlight>
           </Swipeout>

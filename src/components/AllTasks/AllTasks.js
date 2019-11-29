@@ -24,7 +24,7 @@ render() {
               right= {[
                 {
                   onPress: ()=>{
-                      props.boards.splice(props.id-1,1);
+                    this.props.action(task.id)
                   },
                   text:'Delete',
                 

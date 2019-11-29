@@ -14,8 +14,48 @@ class Boards extends Component {
   };
   constructor(props) {
       super(props);
-  
-      this.state = {boards: db['boards'], screenHeight: 0}
+      this.handler = this.handler.bind(this);
+      this.state = {
+        boards: db['boards'],
+        lists: db['lists'],
+        tasks: db['tasks'],
+        screenHeight: 0
+      }
+    }
+
+    handler(id) {
+      let indexOfBoard = null;
+      let newBoard = this.state.boards;
+      for (var i = 0; i < newBoard.length; i++) {
+        var obj = newBoard[i];
+        
+        if (obj.id == id) {
+          indexOfBoard = newBoard.indexOf(obj);
+          newBoard.splice(indexOfBoard,1);
+          break
+        }
+        
+      }
+    
+      
+
+      let newLists = this.state.lists
+      
+      for (var i = 0; i < newLists.length; i++) {
+        var obj = newLists[i];
+        
+        if (obj.boardId == id) {
+          let index = newLists.indexOf(obj);
+          /* add delete to tasks here */
+          newLists.splice(index, 1);
+          
+        }
+        
+      }
+      this.setState({
+        boards: newBoard,
+        lists: newLists
+      });
     }
     
     render(){ 
@@ -30,7 +70,7 @@ class Boards extends Component {
           onContentSizeChange={this.onContentSizeChange}
         >
           <View style={ styles.body }>
-              <AllBoards boards={this.state.boards} navigation = {this.props.navigation}/>
+              <AllBoards boards={this.state.boards} lists={this.state.lists} tasks={this.state.tasks} action={this.handler} navigation = {this.props.navigation}/>
           </View>
           </ScrollView>
       </SafeAreaView>
