@@ -3,22 +3,44 @@ import { StyleSheet, Text, View, Button } from 'react-native';
 import db from '../resources/data.json';
 import styles from '../resources/Styles';
 import AllTasks from '../components/AllTasks/AllTasks';
+import AddModal from '../components/AddModal/AddTaskModal';
+ 
 
 class Tasks extends Component {
     constructor(props) {
         super(props);
         const {navigation} = this.props
         
-        this.state = {tasks: navigation.getParam('tasks')}
-        }
+        this.state = {
+            tasks: navigation.getParam('tasks'),
+            list: navigation.getParam('listId'),
+            isAddModalOpen: false,
+            newTaskname:'',
+            newTaskdescripition:''
 
-        
+        }
+        setModalOpen = (isOpen) => (
+            this.setState({isAddModalOpen: isOpen})
+          )
+
+    }
+        create(){
+            // id: nextId,
+            // name: this.state.newTaskname,
+            // description: this.state.newTaskdescripition,
+            // isFinished: false,
+            // listId: this.state.list
+        }
         
         render(){  
             const {navigation} = this.props
         return (
             <View style={ styles.body }>
                 <AllTasks tasks={this.state.tasks} listId={navigation.getParam('listId')}/>
+                <AddModal
+                    isOpen={this.state.isAddModalOpen}
+                    closeModal={() => this.setState({ isAddModalOpen: false})}
+                />
             </View>
         
             );
