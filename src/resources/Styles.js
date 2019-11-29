@@ -9,6 +9,17 @@ export default StyleSheet.create({
     },
     container: {
         flex: 1,
-    }
+    },
+    plus: { 
+        fontWeight:'bold',
+        //alignSelf: 'flex-end',
+        position: 'absolute',
+        backgroundColor: "blue"
+        
+    },
+    header: {
+        fontSize: 20,
+        color: "#ffff"
+    },
 
 });

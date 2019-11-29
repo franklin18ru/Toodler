@@ -10,9 +10,14 @@ import { takePhoto } from '../TakePhoto/TakePhoto2';
 */
 
 class CreateBoard extends Component {
+    constructor(props) {
+        super(props);
+        
+    }
 state = {
     boardName:'',
-    boardPhoto:''
+    boardPhoto:'',
+    create: false
 }
 inputHandler(name, value){
     this.setState({[name]: value});
@@ -46,7 +51,7 @@ render() {
                 />
             </View>
             <View style={{backgroundColor:'blue'}}>
-                <Button onPress={()=>{}} title="Create"></Button>
+                <Button onPress={()=>{this.props.create(this.state.boardName,this.state.boardPhoto,this.props.boards)}} title="Create"></Button>
             </View>
             {/* add camera */}
         </View>
