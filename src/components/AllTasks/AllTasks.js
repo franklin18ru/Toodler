@@ -35,13 +35,6 @@ render() {
             <Swipeout autoClose={true}
               right= {[
                 {
-                  onPress: ()=>{
-                      props.boards.splice(props.id-1,1);
-                  },
-                  text:'Delete',
-                  type:'delete'
-                },
-                {
                   onPress: ()=>{},
                   text:'Edit',
                   backgroundColor:'green',
