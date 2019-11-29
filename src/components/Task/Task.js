@@ -17,7 +17,7 @@ const Task = props => (
     <View styles={ {alignSelf: 'flex-end'}}>
       <Icon 
           style={ taskStyle.icon } 
-          name='ios-checkmark' color={[(props.isFinished) ? 'green' : '#272936']} size={20} type='ionicon' reverse
+          name='ios-checkmark' color={(props.isFinished) ? 'green' : '#272936'} size={20} type='ionicon' reverse
           
           onPress={()=> {props.action(props.id)}} 
       />
