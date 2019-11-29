@@ -8,6 +8,7 @@ import Container from '../components/Scroll/Scroll';
 import { Icon } from 'react-native-elements';
 import CreateBoard from '../components/CreateBoard/CreateBoard'
 import Board from '../components/Board/Board';
+import AddModal from '../components/AddModal/AddModal';
 
 
 
@@ -21,22 +22,34 @@ class Boards extends Component {
     this.state = {
       boards: db['boards'],
       screenHeight: 0,
-      plusButtonPressed: false
+      isAddModalOpen: false
+
 
     }
-  }
+    
 
+    setModalOpen = (isOpen) => (
+      this.setState({isAddModalOpen: isOpen})
+    )
+  }
+  
   static navigationOptions = {
     headerStyle: {
       backgroundColor: '#181A24',
     },
+    
     headerTitle: () => <Text style={styles.header}>My boards</Text>,
     headerRight: () => (
       <Icon name='ios-add' type='ionicon' color='white' size={40} style={styles.plus}
-          onPress={ () => {Boards.add = true;}}/>
+          onPress={ () => 
+            // {Boards.add = true},
+            setModalOpen(true)
+        }/>
     ),
     
   };
+
+  
 
   create(n,p,b){
     const newBoard={
@@ -44,7 +57,6 @@ class Boards extends Component {
       'thumbnailPhoto':p
     };
     b.push(newBoard);
-    console.log(this.state.boards);
   }
 
   onContentSizeChange = (contentWidth, contentHeight) => {
@@ -54,6 +66,7 @@ class Boards extends Component {
     
     render(){ 
       const scrollEnabled = this.state.screenHeight > height; 
+      const {isAddModalOpen} = this.state
       return (
         <SafeAreaView style={styles.container}>
           <ScrollView
@@ -66,6 +79,10 @@ class Boards extends Component {
               <AllBoards boards={this.state.boards} navigation = {this.props.navigation}/>
             </View>
           </ScrollView>
+          <AddModal
+            isOpen={this.state.isAddModalOpen}
+            closeModal={() => this.setState({ isAddModalOpen: false})}
+            />
       </SafeAreaView>
         );
       }
