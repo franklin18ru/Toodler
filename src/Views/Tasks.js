@@ -18,9 +18,10 @@ class Tasks extends Component {
             listName: navigation.getParam('listName'),
             lists: navigation.getParam('lists'),
             isAddModalOpen: false,
-            newTaskName:'',
+            newTaskname:'',
             newTaskdescripition:'',
-           
+            toggle: navigation.getParam('toggle'),
+
         }
         setModalTaskOpen = (isOpen) => (
             this.setState({isAddModalOpen: isOpen})  
@@ -77,9 +78,9 @@ class Tasks extends Component {
         render(){  
             const {navigation} = this.props
         return (
-            <View style={ styles.body }>
-                <AllTasks tasks={this.state.tasks} listName={this.state.listName} lists={this.state.lists} listId={navigation.getParam('listId')}/>    
-                <AddModal 
+            <View style={ this.state.toggle ? styles.body : styles.bodyLight}>
+                <AllTasks tasks={this.state.tasks} listName={this.state.listName} lists={this.state.lists} listId={navigation.getParam('listId')} navigation={ this.props.navigation }/>
+                <AddModal
                     isOpen={this.state.isAddModalOpen}
                     closeModal={() => this.setState({ isAddModalOpen: false})}
                     inputHandler={(name,value)=>{ this.inputHandler(name,value)}}

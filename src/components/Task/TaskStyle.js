@@ -1,15 +1,13 @@
 import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
-    body: {
-        backgroundColor: '#181A24',
-        flex: 1,
-        flexDirection:'column',
-        justifyContent:'center'
-    },
     title: {
         fontSize: 20,
         color: 'white',
+    },
+    titleLight: {
+        fontSize: 20,
+        color: 'black',
     },
 
     description:{
@@ -17,16 +15,28 @@ export default StyleSheet.create({
         color: 'white',
         paddingTop:10
     },
+    descriptionLight:{
+        fontSize: 15,
+        color: 'black',
+        paddingTop:10
+    },
 
-    boards: {
+    tasks: {
         alignItems: 'flex-start',
         flexDirection: 'column',
-        backgroundColor: '#272936',
+        backgroundColor: '#181A24',
         paddingRight:35, 
         maxWidth: 250
         
     },
-    
+    tasksLight: {
+        alignItems: 'flex-start',
+        flexDirection: 'column',
+        backgroundColor: 'white',
+        paddingRight:35, 
+        maxWidth: 250
+        
+    },
    
     icon: {
         flexDirection: 'row',
@@ -34,13 +44,27 @@ export default StyleSheet.create({
         textAlign: 'right',
         
     },
-    test: {
+
+    body: {
         alignItems: 'flex-start',
         justifyContent: 'space-between',
         flexDirection: 'row',
-        borderWidth: 0.5,
-        borderColor: 'black',
-        backgroundColor: '#272936',
+        borderBottomWidth: 0.3,
+        borderBottomColor: 'white',
+        backgroundColor: '#181A24',
+        paddingTop:20,
+        paddingBottom:20,
+        paddingLeft:40,
+        paddingRight:40, 
+        
+    },
+    bodyLight: {
+        alignItems: 'flex-start',
+        justifyContent: 'space-between',
+        flexDirection: 'row',
+        borderBottomWidth: 0.3,
+        borderBottomColor: 'black',
+        backgroundColor: 'white',
         paddingTop:20,
         paddingBottom:20,
         paddingLeft:40,

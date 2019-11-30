@@ -5,12 +5,14 @@ import styles from './BoardStyles';
 
 
 const Board = props => (
-  <View style={ styles.boards }>
-    <Image
+  <View style={ props.toggle ? styles.body : styles.bodyLight}>
+    <View style={ props.toggle ? styles.boards : styles.boardsLight}>
+      <Image
           style={{width: 50, height: 50}}
           source={{uri: props.photo}}
         />
-    <Text style={ styles.text } >{ props.name }</Text>
+      <Text style={ props.toggle ? styles.text : styles.textLight} >{ props.name }</Text>
+    </View>
   </View>
 
 )

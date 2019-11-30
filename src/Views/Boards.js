@@ -1,12 +1,9 @@
 import React, { Component} from 'react';
-import { SafeAreaView, View, Text, ScrollView, Dimensions, Button} from "react-native";
+import { SafeAreaView, View, Text, ScrollView, Dimensions} from "react-native";
 import AllBoards from '../components/AllBoards/AllBoards';
 import db from '../resources/data.json';
 import styles from '../resources/Styles';
-import BoardPage from './Lists';
-import Container from '../components/Scroll/Scroll';
 import { Icon } from 'react-native-elements';
-import Board from '../components/Board/Board';
 import AddModal from '../components/AddModal/AddBoardModal';
 import { takePhoto } from '../components/TakePhoto/TakePhoto2';
 
@@ -16,8 +13,8 @@ const { height } = Dimensions.get('window');
 
 class Boards extends Component {
   constructor(props) {
-
     super(props);
+    const {navigation} = this.props;
     this.handler = this.handler.bind(this);
     this.state = {
       boards: db['boards'],
@@ -26,10 +23,8 @@ class Boards extends Component {
       screenHeight: 0,
       isAddModalOpen: false,
       newBoardName: '',
-      newBoardPhoto: ''
-      
-
-
+      newBoardPhoto: '',
+      toggle: navigation.getParam('toggle'),
     }
     
 
@@ -40,12 +35,12 @@ class Boards extends Component {
   
   static navigationOptions = {
     headerStyle: {
-      backgroundColor: '#181A24',
+      backgroundColor: 'white',
     },
     
     headerTitle: () => <Text style={styles.header}>My boards</Text>,
     headerRight: () => (
-      <Icon name='ios-add' type='ionicon' color='white' size={40} style={styles.plus}
+      <Icon name='ios-add' type='ionicon' color='#181A24' size={40} style={styles.plus}
           onPress={ () => 
             // {Boards.add = true},
             setModalBoardOpen(true)
@@ -174,16 +169,16 @@ class Boards extends Component {
       const scrollEnabled = this.state.screenHeight > height; 
       
       return (
-        <SafeAreaView style={styles.container}>
+        <SafeAreaView style={styles.container, {flex: 1, backgroundColor: this.state.toggle ? '#181A24' : 'white' }}>
 
         {/* <StatusBar barStyle="light-content" backgroundColor="#468189" /> */}
         <ScrollView
-          style={styles.body}
+          style={this.state.toggle ? styles.body : styles.bodyLight}
           contentContainerStyle={styles.scrollview}
           scrollEnabled={scrollEnabled}
           onContentSizeChange={this.onContentSizeChange}
         >
-          <View style={ styles.body }>
+          <View style={ this.state.toggle ? styles.body : styles.bodyLight}>
               <AllBoards boards={this.state.boards} lists={this.state.lists} tasks={this.state.tasks} action={this.handler} navigation = {this.props.navigation}/>
               
           </View>
