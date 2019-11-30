@@ -19,20 +19,21 @@ export default StyleSheet.create({
         width: minWidth - 50,
         backgroundColor: 'white',
         padding: 40,
+        position: 'absolute',
 
     },
     textInput: {
         flex: 1,
         backgroundColor: 'white',
         textAlign: 'center',
-        fontSize: 20,
+        fontSize: 15,
         borderWidth: 0.5,
         borderRadius: 5,
         borderColor: 'black',
-        paddingTop:10,
-        paddingBottom:10,
+        paddingTop:20,
+        paddingBottom:20,
         paddingRight:10,
-        paddingLeft: 10
+        paddingLeft: 10,
     },
     
 });

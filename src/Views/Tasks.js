@@ -31,12 +31,12 @@ class Tasks extends Component {
 
     static navigationOptions = {
         headerStyle: {
-          backgroundColor: '#181A24',
+          backgroundColor: 'white',
         },
         
         headerTitle: () => <Text style={styles.header}>{ln()}</Text>,
         headerRight: () => (
-          <Icon name='ios-add' type='ionicon' color='white' size={40} style={styles.plus}
+          <Icon name='ios-add' type='ionicon' color='black' size={40} style={styles.plus}
               onPress={ () => 
                 // {Boards.add = true},
                 setModalTaskOpen(true)
