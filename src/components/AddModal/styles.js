@@ -13,11 +13,26 @@ export default StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
+        flexDirection:'column',
         flexGrow: 0.3,
         borderRadius: 10,
-        width: minWidth - 100,
+        width: minWidth - 50,
         backgroundColor: 'white',
         padding: 40,
 
     },
+    textInput: {
+        flex: 1,
+        backgroundColor: 'white',
+        textAlign: 'center',
+        fontSize: 20,
+        borderWidth: 0.5,
+        borderRadius: 5,
+        borderColor: 'black',
+        paddingTop:10,
+        paddingBottom:10,
+        paddingRight:10,
+        paddingLeft: 10
+    },
+    
 });

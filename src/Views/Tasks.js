@@ -16,6 +16,7 @@ class Tasks extends Component {
             tasks: navigation.getParam('tasks'),
             list: navigation.getParam('listId'),
             listName: navigation.getParam('listName'),
+            lists: navigation.getParam('lists'),
             isAddModalOpen: false,
             newTaskName:'',
             newTaskdescripition:'',
@@ -77,7 +78,7 @@ class Tasks extends Component {
             const {navigation} = this.props
         return (
             <View style={ styles.body }>
-                <AllTasks tasks={this.state.tasks} listId={navigation.getParam('listId')}/>    
+                <AllTasks tasks={this.state.tasks} listName={this.state.listName} lists={this.state.lists} listId={navigation.getParam('listId')}/>    
                 <AddModal 
                     isOpen={this.state.isAddModalOpen}
                     closeModal={() => this.setState({ isAddModalOpen: false})}

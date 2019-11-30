@@ -76,6 +76,7 @@ class Boards extends Component {
 
   async get(){
     const photo = await takePhoto();
+    console.log(photo);
     this.setState({'newBoardPhoto':photo});
   }
     getHighestId(){
@@ -103,6 +104,12 @@ class Boards extends Component {
       this.setState({isAddModalOpen:false, boards: boards});
     }
 
+    photoTaken(){
+      if(this.state.newBoardPhoto != ''){
+        return true
+      }
+      return false
+    }
 
 
 
@@ -190,6 +197,7 @@ class Boards extends Component {
                 photo={this.state.newBoardPhoto}
                 takePhoto={()=>{ this.getThumbnail() }}
                 inputHandler={(name,value)=>{ this.inputHandler(name,value)}}
+                hasTakenPhoto={()=>{return this.photoTaken}}
             />
       </SafeAreaView>
         );
