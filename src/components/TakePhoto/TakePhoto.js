@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, Button, TouchableOpacity, Dimensions} from 'react-native';
+import { View, Dimensions} from 'react-native';
 import * as Permissions from 'expo-permissions';
 import { Camera } from 'expo-camera';
 import Vibrate from '../Vibrate/Vibrate'

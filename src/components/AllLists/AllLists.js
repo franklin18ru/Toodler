@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, Button, TouchableHighlight } from 'react-native';
+import { View, TouchableHighlight } from 'react-native';
 import Swipeout from 'react-native-swipeout';
 import List from '../List/List';
-import styles from '../../resources/Styles';
 
 
 
@@ -33,12 +32,12 @@ render() {
            
             type:'delete'
           },
-          {
-            onPress: ()=>{},
-            text:'Edit',
-            backgroundColor:'green',
-            type:'edit'
-          }
+          // {
+          //   onPress: ()=>{},
+          //   text:'Edit',
+          //   backgroundColor:'green',
+          //   type:'edit'
+          // }
          
         ]}
         

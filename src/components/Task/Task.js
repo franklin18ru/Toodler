@@ -1,7 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {View, Text } from 'react-native';
 import styles from './TaskStyle';
-import CheckBox from 'react-native-check-box';
 import { Icon } from 'react-native-elements'
 
 

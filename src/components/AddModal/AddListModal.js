@@ -1,9 +1,8 @@
 import React from 'react';
 import NativeModal from 'react-native-modal';
-import { Text, View, Button, TextInput  } from 'react-native';
+import { View, Button, TextInput  } from 'react-native';
 import styles from './styles';
 import { Icon } from 'react-native-elements';
-import { takePhoto } from '../TakePhoto/TakePhoto2';
 import ColorPalette from 'react-native-color-palette';
 
 

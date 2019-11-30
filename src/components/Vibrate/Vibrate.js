@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Text, View, Vibration} from 'react-native';
+import React from 'react';
+import { Vibration } from 'react-native';
 
 const pattern = [
     1000,

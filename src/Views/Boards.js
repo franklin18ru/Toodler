@@ -54,7 +54,6 @@ class Boards extends Component {
 
   
   contentChanged(height){
-    console.log(height);
     if(this.state.screenHeight-100 < height){
       this.setState({scrollEnabled:true})
       return

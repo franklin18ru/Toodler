@@ -1,5 +1,5 @@
 import React from "react";
-import { SafeAreaView, StatusBar, View, ScrollView, Dimensions } from "react-native";
+import { SafeAreaView, View, ScrollView, Dimensions } from "react-native";
 import styles from './ScrollStyle';
 
 const { height } = Dimensions.get('window');

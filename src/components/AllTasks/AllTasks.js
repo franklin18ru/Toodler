@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, Button, TouchableHighlight } from 'react-native';
+import { View } from 'react-native';
 import Swipeout from 'react-native-swipeout';
 import Task from '../Task/Task';
-import styles from '../../resources/Styles';
 import AddModal from '../AddModal/EditTaskModal';
 
 

@@ -10,13 +10,13 @@ export default StyleSheet.create({
         alignItems: 'center',
     },
     body: {
-        flex: 1,
+        flex: 1.1,
         alignItems: 'center',
         justifyContent: 'center',
         flexDirection:'column',
         flexGrow: 0.3,
         borderRadius: 10,
-        width: minWidth - 50,
+        width: minWidth - 40,
         backgroundColor: 'white',
         padding: 40,
         position: 'absolute',
@@ -32,5 +32,7 @@ export default StyleSheet.create({
         paddingRight:10,
         paddingLeft: 10,
     },
-    
+    buttonStyle: {
+        paddingBottom: 20
+    }
 });

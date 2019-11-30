@@ -27,12 +27,12 @@ render() {
               text:'Delete',
               type:'delete'
             },
-          {
-            onPress: ()=>{},
-            text:'Edit',
-            backgroundColor:'green',
-            type:'edit'
-          }
+          // {
+          //   onPress: ()=>{},
+          //   text:'Edit',
+          //   backgroundColor:'green',
+          //   type:'edit'
+          // }
          
         ]}
         >

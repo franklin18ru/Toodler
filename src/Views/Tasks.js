@@ -1,6 +1,5 @@
 import React, { Component} from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
-import db from '../resources/data.json';
+import { Text, View } from 'react-native';
 import styles from '../resources/Styles';
 import AllTasks from '../components/AllTasks/AllTasks';
 import AddModal from '../components/AddModal/AddTaskModal';

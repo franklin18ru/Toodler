@@ -1,8 +1,7 @@
 import React from 'react';
 import NativeModal from 'react-native-modal';
-import { Text, View, Button, TextInput, Picker  } from 'react-native';
+import { View, Button, Picker } from 'react-native';
 import styles from './styles';
-import { Icon } from 'react-native-elements';
 
 
 
