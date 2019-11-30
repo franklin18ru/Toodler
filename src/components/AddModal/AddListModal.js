@@ -28,7 +28,7 @@ const AddModal = ({ isOpen, closeModal,inputHandler, action, selectedColor,chang
         />
     <ColorPalette
         onChange={colorChange => changeColor(colorChange)}
-        value={selectedColor()}
+        value={selectedColor}
         colors={['red', 'blue', 'green', 'pink', 'purple','black','maroon','cyan']}
         title={"Choose color:"}
         icon={

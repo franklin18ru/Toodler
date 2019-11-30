@@ -37,7 +37,7 @@ render() {
         ]}
         >
           <TouchableHighlight onPress={() => this.props.navigation.navigate('Lists', {boardId: board.id,boardName: board.name, lists: this.props.lists, tasks: this.props.tasks, toggle: this.state.toggle} )}>
-            <Board id={ board.id } name ={ board.name} toggle={this.props.navigation.getParam('toggle')} />
+            <Board id={ board.id } photo={board.thumbnailPhoto} name ={ board.name} toggle={this.props.navigation.getParam('toggle')} />
           </TouchableHighlight>
           </Swipeout>
           </React.Fragment>

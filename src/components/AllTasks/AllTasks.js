@@ -3,6 +3,7 @@ import { Text, View, StyleSheet, Button, TouchableHighlight } from 'react-native
 import Swipeout from 'react-native-swipeout';
 import Task from '../Task/Task';
 import styles from '../../resources/Styles';
+import AddModal from '../AddModal/EditTaskModal';
 
 
 
@@ -12,8 +13,10 @@ constructor(props){
   super(props);
   this.handler = this.handler.bind(this);
   this.state = {
-    tasks: this.props.tasks
-  
+    tasks: this.props.tasks,
+    isModalEditOpen: false,
+    list:this.props.listName,
+    lists:this.props.lists
   }
 }
 handler(id){
@@ -26,6 +29,9 @@ handler(id){
     }
   }
   this.setState({tasks: newTask})
+}
+openEditModal(){
+  this.setState({isModalEditOpen: true})
 }
 
 
@@ -41,7 +47,9 @@ render() {
             <Swipeout autoClose={true}
               right= {[
                 {
-                  onPress: ()=>{},
+                  onPress: ()=>{
+                    this.openEditModal()
+                  },
                   text:'Edit',
                   backgroundColor:'green',
                   type:'edit'
@@ -56,6 +64,13 @@ render() {
         })
 
       }
+      <AddModal 
+        isOpen={this.state.isModalEditOpen}
+        closeModal={() => this.setState({ isModalEditOpen: false})}
+        currentList={this.state.list}
+        allLists={this.state.lists}
+        
+      />
     </View>
   );
 }
