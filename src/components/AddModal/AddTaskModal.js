@@ -25,6 +25,7 @@ const AddModal = ({ isOpen, closeModal, inputHandler, action, children})=> (
             
             onChangeText={ text => inputHandler('newTaskName',text) }
         />
+        <Text>------------------------------------------------</Text>
         <TextInput style={ styles.textInput }
             placeholder='Enter description here'
             autoCapitalize='sentences'

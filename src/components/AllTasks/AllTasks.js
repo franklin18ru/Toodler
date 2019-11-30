@@ -15,10 +15,10 @@ constructor(props){
   this.state = {
     tasks: this.props.tasks,
     isModalEditOpen: false,
-    list:this.props.listName,
+    list: this.props.listId,
     lists:this.props.lists,
     taskId: -1,
-    listId: -1
+    listId: this.props.listId
   }
 }
 handler(id){
@@ -47,6 +47,11 @@ move(){
     }
   }
   this.setState({tasks:tasks, isModalEditOpen: false});
+}
+
+changeList(id){
+  this.setState({list:id, listId:id})
+  
 }
 
 
@@ -82,9 +87,9 @@ render() {
       <AddModal 
         isOpen={this.state.isModalEditOpen}
         closeModal={() => this.setState({ isModalEditOpen: false})}
-        currentList={()=>{return this.state.list}}
+        currentList={this.state.list}
         allLists={this.state.lists}
-        changeList={(name,id)=>{this.setState({list:name,listId:id})}}
+        changeList={(id)=>{this.changeList(id)}}
         action={()=>{this.move()}}
       />
     </View>

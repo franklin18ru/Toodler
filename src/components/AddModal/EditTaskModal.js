@@ -20,16 +20,16 @@ const AddModal = ({ isOpen, closeModal, currentList, allLists, changeList, actio
         
         {/* add picker */}
         <Picker
-            selectedValue={currentList()}
+            selectedValue={currentList}
             style={{height: 100, width: 250}}
             onValueChange={(itemValue, itemIndex) =>{
                 
-                changeList(itemValue['name'],itemValue['id']);
+                changeList(itemValue);
             }}
         >
             { allLists.map(list =>{
                 return(
-                    <Picker.Item key={list.id} label={list.name} value={{id:list.id,name:list.name}} />
+                    <Picker.Item key={list.id} label={list.name} value={list.id} />
                 )
             })}
             

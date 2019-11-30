@@ -9,19 +9,22 @@ import { takePhoto } from '../components/TakePhoto/TakePhoto2';
 
 
 
-const { height } = Dimensions.get('window');
+
+
 
 class Boards extends Component {
   constructor(props) {
     super(props);
     const {navigation} = this.props;
     this.handler = this.handler.bind(this);
+    const { height } = Dimensions.get('window');
     this.state = {
       boards: db['boards'],
       lists: db['lists'],
       tasks: db['tasks'],
-      screenHeight: 0,
+      screenHeight: height,
       isAddModalOpen: false,
+      scrollEnabled: false,
       newBoardName: '',
       newBoardPhoto: 'https://www.northcliftonestates.ca/wp-content/uploads/2019/06/placeholder-images-image_large.png',
       toggle: navigation.getParam('toggle'),
@@ -50,13 +53,14 @@ class Boards extends Component {
   };
 
   
-
-  
-
-  onContentSizeChange = (contentWidth, contentHeight) => {
-    this.setState({ screenHeight: contentHeight });
-  };
-
+  contentChanged(height){
+    console.log(height);
+    if(this.state.screenHeight-100 < height){
+      this.setState({scrollEnabled:true})
+      return
+    }
+    this.setState({scrollEnabled:false})
+  }
 
 
   inputHandler(name, value){
@@ -71,7 +75,6 @@ class Boards extends Component {
 
   async get(){
     const photo = await takePhoto();
-    console.log(photo);
     this.setState({'newBoardPhoto':photo});
   }
     getHighestId(){
@@ -166,7 +169,7 @@ class Boards extends Component {
 
     
     render(){ 
-      const scrollEnabled = this.state.screenHeight > height+100; 
+      
       
       return (
         <SafeAreaView style={styles.container, {flex: 1, backgroundColor: this.state.toggle ? '#181A24' : 'white' }}>
@@ -175,8 +178,8 @@ class Boards extends Component {
         <ScrollView
           style={this.state.toggle ? styles.body : styles.bodyLight}
           contentContainerStyle={styles.scrollview}
-          scrollEnabled={scrollEnabled}
-          onContentSizeChange={this.onContentSizeChange}
+          scrollEnabled={this.state.scrollEnabled}
+          onContentSizeChange={(w,h)=>{this.contentChanged(h)}}
         >
           <View style={ this.state.toggle ? styles.body : styles.bodyLight}>
               <AllBoards boards={this.state.boards} lists={this.state.lists} tasks={this.state.tasks} action={this.handler} navigation = {this.props.navigation}/>
