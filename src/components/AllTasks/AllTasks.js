@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View } from 'react-native';
 import Swipeout from 'react-native-swipeout';
 import Task from '../Task/Task';
-import AddModal from '../AddModal/EditTaskModal';
+import AddModal from '../EditTask/EditTaskModal';
 
 
 

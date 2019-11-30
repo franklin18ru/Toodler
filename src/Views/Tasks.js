@@ -2,7 +2,7 @@ import React, { Component} from 'react';
 import { Text, View } from 'react-native';
 import styles from '../resources/Styles';
 import AllTasks from '../components/AllTasks/AllTasks';
-import AddModal from '../components/AddModal/AddTaskModal';
+import AddModal from '../components/AddTask/AddTaskModal';
 import { Icon } from 'react-native-elements';
  
 

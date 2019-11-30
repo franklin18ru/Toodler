@@ -2,7 +2,7 @@ import React, { Component} from 'react';
 import { Text, View } from 'react-native';
 import styles from '../resources/Styles';
 import { Icon } from 'react-native-elements';
-import AddModal from '../components/AddModal/AddListModal';
+import AddModal from '../components/AddList/AddListModal';
 import AllLists from '../components/AllLists/AllLists';
 
 class Lists extends Component {

@@ -4,8 +4,8 @@ import AllBoards from '../components/AllBoards/AllBoards';
 import db from '../resources/data.json';
 import styles from '../resources/Styles';
 import { Icon } from 'react-native-elements';
-import AddModal from '../components/AddModal/AddBoardModal';
-import { takePhoto } from '../components/TakePhoto/TakePhoto2';
+import AddModal from '../components/AddBoard/AddBoardModal';
+import { takePhoto } from '../components/TakePhoto/TakePhoto';
 
 
 
