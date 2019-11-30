@@ -40,7 +40,7 @@ const AddModal = ({ isOpen, closeModal,inputHandler, action, selectedColor,chang
         
         }
     />
-    <Button onPress={()=>{action(selectedColor())}} title="Create"></Button>
+    <Button onPress={()=>{action(selectedColor)}} title="Create"></Button>
     </View>
 
     </NativeModal>
