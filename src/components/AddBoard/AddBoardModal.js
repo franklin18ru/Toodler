@@ -26,7 +26,7 @@ const AddModal = ({ isOpen, closeModal, action, name, photo, takePhoto, inputHan
                 onChangeText={ text => inputHandler('newBoardName',text) }
             />
             
-                {hasTakenPhoto() ? <Image style={{width: 50, height: 50}} source={{uri: photo}}/>  : null }
+                {hasTakenPhoto() ? <Image style={styles.img} source={{uri: photo}}/>  : null }
                 <Icon 
                     name='ios-camera' color='#181A24' type='ionicon' reverse 
                     onPress={()=>{ takePhoto() }}

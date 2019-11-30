@@ -34,5 +34,9 @@ export default StyleSheet.create({
     },
     buttonStyle: {
         paddingBottom: 20
+    },
+    picker: {
+        height: 100,
+        width: 250
     }
 });

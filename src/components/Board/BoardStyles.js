@@ -44,5 +44,9 @@ export default StyleSheet.create({
         marginLeft: 15,
         marginRight: 15,
         
+    },
+    img:{
+        width: 50,
+        height: 50
     }
 });

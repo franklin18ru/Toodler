@@ -1,5 +1,5 @@
 import React, { Component} from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, ScrollView, Dimensions, SafeAreaView } from 'react-native';
 import styles from '../resources/Styles';
 import { Icon } from 'react-native-elements';
 import AddModal from '../components/AddList/AddListModal';
@@ -9,6 +9,7 @@ class Lists extends Component {
     constructor(props) {
         super(props);
         const {navigation} = this.props
+        const { height } = Dimensions.get('window');
         this.handler = this.handler.bind(this);
         
         this.state = {
@@ -16,6 +17,8 @@ class Lists extends Component {
             tasks: navigation.getParam('tasks'),
             board: navigation.getParam('boardId'),
             isAddModalOpen: false,
+            screenHeight: height,
+            scrollEnabled: false,
             boardName: navigation.getParam('boardName'),
             newListName:'',
             newListColor:'red',
@@ -27,6 +30,13 @@ class Lists extends Component {
             this.setState({isAddModalOpen: isOpen})
           )
         bn = ()=>{return this.state.boardName}
+    }
+    contentChanged(height){
+      if(this.state.screenHeight-100 < height){
+        this.setState({scrollEnabled:true})
+        return
+      }
+      this.setState({scrollEnabled:false})
     }
 
 
@@ -131,20 +141,28 @@ class Lists extends Component {
             const {navigation} = this.props
             
         return (
-
-            <View style={ this.state.toggle ? styles.body : styles.bodyLight}>
-
-                <AllLists lists={ this.state.lists } tasks={navigation.getParam('tasks')} action={this.handler} boardId={ navigation.getParam('boardId') } navigation={ this.props.navigation }/>
-                <AddModal 
-                  isOpen={this.state.isAddModalOpen}
-                  closeModal={() => this.setState({ isAddModalOpen: false})}
-                  inputHandler={(name,value)=>{ this.inputHandler(name,value)}}
-                  action={(color) => { this.create(color) }}
-                  color={this.state.newListColor}
-                  selectedColor={this.state.newListColor}
-                  changeColor ={(color)=>{ this.setState({newListColor:color})}} 
-                />
-            </View>
+          <SafeAreaView style={styles.container, {flex: 1, backgroundColor: this.state.toggle ? '#181A24' : 'white' }}>
+            <ScrollView
+              style={this.state.toggle ? styles.body : styles.bodyLight}
+              contentContainerStyle={styles.scrollview}
+              scrollEnabled={this.state.scrollEnabled}
+              onContentSizeChange={(w,h)=>{this.contentChanged(h)}}
+            >
+              <View style={ this.state.toggle ? styles.body : styles.bodyLight}>
+                  <AllLists lists={ this.state.lists } tasks={navigation.getParam('tasks')} action={this.handler} boardId={ navigation.getParam('boardId') } navigation={ this.props.navigation }/>
+              </View>
+            </ScrollView>
+                  <AddModal 
+                    isOpen={this.state.isAddModalOpen}
+                    closeModal={() => this.setState({ isAddModalOpen: false})}
+                    inputHandler={(name,value)=>{ this.inputHandler(name,value)}}
+                    action={(color) => { this.create(color) }}
+                    color={this.state.newListColor}
+                    selectedColor={this.state.newListColor}
+                    changeColor ={(color)=>{ this.setState({newListColor:color})}} 
+                  />
+              
+          </SafeAreaView>
             );
         }
         }

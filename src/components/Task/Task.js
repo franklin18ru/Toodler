@@ -12,7 +12,7 @@ const Task = props => (
       <Text style={ props.toggle ? styles.title : styles.titleLight}>{ props.name }</Text>
       <Text style={ props.toggle ? styles.description : styles.descriptionLight}>{ props.description}</Text>
     </View>
-    <View styles={ {alignSelf: 'flex-end'}}>
+    <View styles={styles.box}>
       <Icon 
           style={ styles.icon } 
           name='ios-checkmark' color={(props.isFinished) ? 'green' : '#181A24'} size={20} borderWidth={0.3} borderColor={'white'} type='ionicon' reverse

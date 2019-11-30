@@ -1,5 +1,5 @@
 import React, { Component} from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, ScrollView, Dimensions, SafeAreaView } from 'react-native';
 import styles from '../resources/Styles';
 import AllTasks from '../components/AllTasks/AllTasks';
 import AddModal from '../components/AddTask/AddTaskModal';
@@ -10,6 +10,7 @@ class Tasks extends Component {
     constructor(props) {
         super(props);
         const {navigation} = this.props
+        const { height } = Dimensions.get('window');
         
         this.state = {
             tasks: navigation.getParam('tasks'),
@@ -17,6 +18,8 @@ class Tasks extends Component {
             listName: navigation.getParam('listName'),
             lists: navigation.getParam('lists'),
             isAddModalOpen: false,
+            screenHeight: height,
+            scrollEnabled: false,
             newTaskname:'',
             newTaskdescripition:'',
             toggle: navigation.getParam('toggle'),
@@ -27,6 +30,14 @@ class Tasks extends Component {
           )
           ln = ()=>{return this.state.listName}
     }
+
+    contentChanged(height){
+        if(this.state.screenHeight-100 < height){
+          this.setState({scrollEnabled:true})
+          return
+        }
+        this.setState({scrollEnabled:false})
+      }
 
     static navigationOptions = {
         headerStyle: {
@@ -77,15 +88,24 @@ class Tasks extends Component {
         render(){  
             const {navigation} = this.props
         return (
-            <View style={ this.state.toggle ? styles.body : styles.bodyLight}>
-                <AllTasks tasks={this.state.tasks} listName={this.state.listName} lists={this.state.lists} listId={navigation.getParam('listId')} navigation={ this.props.navigation }/>
-                <AddModal
-                    isOpen={this.state.isAddModalOpen}
-                    closeModal={() => this.setState({ isAddModalOpen: false})}
-                    inputHandler={(name,value)=>{ this.inputHandler(name,value)}}
-                    action={() => { this.create() }}/>
-            </View>
-            
+            <SafeAreaView style={styles.container, {flex: 1, backgroundColor: this.state.toggle ? '#181A24' : 'white' }}>
+                <ScrollView
+                style={this.state.toggle ? styles.body : styles.bodyLight}
+                contentContainerStyle={styles.scrollview}
+                scrollEnabled={this.state.scrollEnabled}
+                onContentSizeChange={(w,h)=>{this.contentChanged(h)}}
+                >
+                    <View style={ this.state.toggle ? styles.body : styles.bodyLight}>
+                        <AllTasks tasks={this.state.tasks} listName={this.state.listName} lists={this.state.lists} listId={navigation.getParam('listId')} navigation={ this.props.navigation }/>
+                    </View>
+                </ScrollView>
+                    <AddModal
+                        isOpen={this.state.isAddModalOpen}
+                        closeModal={() => this.setState({ isAddModalOpen: false})}
+                        inputHandler={(name,value)=>{ this.inputHandler(name,value)}}
+                        action={() => { this.create() }}
+                    />
+            </SafeAreaView>
             );
         }
         }

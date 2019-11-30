@@ -34,5 +34,9 @@ export default StyleSheet.create({
     },
     buttonStyle: {
         paddingBottom: 20
+    },
+    img:{
+        width: 50,
+        height: 50
     }
 });

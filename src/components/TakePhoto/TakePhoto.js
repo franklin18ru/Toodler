@@ -5,10 +5,6 @@ const getPermissions = async permissionTypes => {
     await Promise.all(permissionTypes.map( async type => await Permissions.askAsync(type)));
 };
 
-// export const selectFromCameraRoll = async () => {
-
-// };
-
 export const takePhoto = async () => {
     await getPermissions([Permissions.CAMERA, Permissions.CAMERA_ROLL]);
     const result = await ImagePicker.launchCameraAsync({

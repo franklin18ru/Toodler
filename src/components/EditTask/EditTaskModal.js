@@ -20,7 +20,7 @@ const AddModal = ({ isOpen, closeModal, currentList, allLists, changeList, actio
         {/* add picker */}
         <Picker
             selectedValue={currentList}
-            style={{height: 100, width: 250}}
+            style={styles.picker}
             onValueChange={(itemValue, itemIndex) =>{
                 
                 changeList(itemValue);

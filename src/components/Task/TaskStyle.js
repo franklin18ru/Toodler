@@ -80,6 +80,9 @@ export default StyleSheet.create({
         paddingRight:40, 
         
     },
+    box: {
+        alignSelf: 'flex-end'
+    }
 
 
 });
