@@ -16,7 +16,8 @@ class Tasks extends Component {
             list: navigation.getParam('listId'),
             isAddModalOpen: false,
             newTaskname:'',
-            newTaskdescripition:''
+            newTaskdescripition:'',
+            toggle: navigation.getParam('toggle'),
 
         }
         setModalOpen = (isOpen) => (
@@ -35,8 +36,8 @@ class Tasks extends Component {
         render(){  
             const {navigation} = this.props
         return (
-            <View style={ styles.body }>
-                <AllTasks tasks={this.state.tasks} listId={navigation.getParam('listId')}/>
+            <View style={ this.state.toggle ? styles.body : styles.bodyLight}>
+                <AllTasks tasks={this.state.tasks} listId={navigation.getParam('listId')} navigation={ this.props.navigation }/>
                 <AddModal
                     isOpen={this.state.isAddModalOpen}
                     closeModal={() => this.setState({ isAddModalOpen: false})}

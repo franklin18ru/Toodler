@@ -158,7 +158,7 @@ class Boards extends Component {
       const scrollEnabled = this.state.screenHeight > height; 
       const {isAddModalOpen} = this.state
       return (
-        <SafeAreaView style={styles.container}>
+        <SafeAreaView style={styles.container, {flex: 1, backgroundColor: this.state.toggle ? '#181A24' : 'white' }}>
 
         {/* <StatusBar barStyle="light-content" backgroundColor="#468189" /> */}
         <ScrollView

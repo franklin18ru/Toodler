@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import {View, Text } from 'react-native';
-import styles from '../Board/BoardStyles';
-import taskStyle from './TaskStyle';
+import styles from './TaskStyle';
 import CheckBox from 'react-native-check-box';
 import { Icon } from 'react-native-elements'
 
@@ -9,15 +8,15 @@ import { Icon } from 'react-native-elements'
 
 const Task = props => (
 
-  <View style={ taskStyle.test }>
-    <View style={ taskStyle.boards }>      
-      <Text style={ taskStyle.title }>{ props.name }</Text>
-      <Text style={ taskStyle.description }>{ props.description}</Text>
+  <View style={ props.toggle ? styles.body : styles.bodyLight}>
+    <View style={ props.toggle ? styles.tasks : styles.tasksLight}>      
+      <Text style={ props.toggle ? styles.title : styles.titleLight}>{ props.name }</Text>
+      <Text style={ props.toggle ? styles.description : styles.descriptionLight}>{ props.description}</Text>
     </View>
     <View styles={ {alignSelf: 'flex-end'}}>
       <Icon 
-          style={ taskStyle.icon } 
-          name='ios-checkmark' color={(props.isFinished) ? 'green' : '#272936'} size={20} type='ionicon' reverse
+          style={ styles.icon } 
+          name='ios-checkmark' color={(props.isFinished) ? 'green' : '#181A24'} size={20} borderWidth={0.3} borderColor={'white'} type='ionicon' reverse
           
           onPress={()=> {props.action(props.id)}} 
       />

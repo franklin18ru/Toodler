@@ -37,7 +37,7 @@ class Lists extends Component {
         
         headerTitle: () => <Text style={styles.header}>{bn()}</Text>,
         headerRight: () => (
-          <Icon name='ios-add' type='ionicon' color='white' size={40} style={styles.plus}
+          <Icon name='ios-add' type='ionicon' color='black' size={40} style={styles.plus}
               onPress={ () => 
                 // {Boards.add = true},
                 setModalOpen(true)
@@ -130,7 +130,6 @@ class Lists extends Component {
           
             const {navigation} = this.props
         return (
-        console.log(navigation.getParam('toggle')),
             <View style={ this.state.toggle ? styles.body : styles.bodyLight}>
                 <AllLists lists={ this.state.lists } tasks={navigation.getParam('tasks')} action={this.handler} boardId={ navigation.getParam('boardId') } navigation={ this.props.navigation }/>
                 <AddModal
