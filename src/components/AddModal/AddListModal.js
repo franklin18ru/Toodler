@@ -1,7 +1,6 @@
 import React from 'react';
-import {Entypo} from '@expo/vector-icons';
 import NativeModal from 'react-native-modal';
-import { Text, TouchableHighlight, View, Button, TextInput  } from 'react-native';
+import { Text, View, Button, TextInput  } from 'react-native';
 import styles from './styles';
 import { Icon } from 'react-native-elements';
 import { takePhoto } from '../TakePhoto/TakePhoto2';

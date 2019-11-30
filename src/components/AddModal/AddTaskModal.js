@@ -2,12 +2,13 @@ import React from 'react';
 import NativeModal from 'react-native-modal';
 import { Text, View, Button, TextInput  } from 'react-native';
 import styles from './styles';
-import { Icon } from 'react-native-elements';
 
 
 
 
-const AddModal = ({ isOpen, closeModal, action, name, photo, takePhoto, inputHandler, children})=> (
+
+
+const AddModal = ({ isOpen, closeModal, children})=> (
     <NativeModal
         isVisible={isOpen}
         hasBackdrop
@@ -18,18 +19,14 @@ const AddModal = ({ isOpen, closeModal, action, name, photo, takePhoto, inputHan
     >
     <View style={styles.body}>
         <TextInput style={ styles.textInput }
-            placeholder='Enter board name here'
+            placeholder='Enter task name here'
             autoCapitalize='sentences'
             autoCompleteType='name'
             
-            onChangeText={ text => inputHandler('newBoardName',text) }
+            onChangeText={ text => text }
         />
-        <Icon 
-            name='ios-camera' color='#181A24' type='ionicon' reverse 
-            onPress={()=>{ photo = takePhoto() }}
-
-        />
-        <Button onPress={()=>{action(photo)}} title="Create"></Button>
+        {/* inputHandler('newTaskName',text) */}
+        <Button onPress={()=>{}} title="Create"></Button>
     </View>
 
     </NativeModal>
