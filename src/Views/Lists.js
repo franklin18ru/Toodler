@@ -20,8 +20,9 @@ class Lists extends Component {
             boardName: navigation.getParam('boardName'),
             newListName:'',
             newListColor:'red',
+            toggle: navigation.getParam('toggle'),
         }
-
+        
         setModalOpen = (isOpen) => (
             this.setState({isAddModalOpen: isOpen})
           )
@@ -31,7 +32,7 @@ class Lists extends Component {
 
     static navigationOptions = {
         headerStyle: {
-          backgroundColor: '#181A24',
+          backgroundColor: 'white',
         },
         
         headerTitle: () => <Text style={styles.header}>{bn()}</Text>,
@@ -126,9 +127,11 @@ class Lists extends Component {
           }
         
         render(){  
+          
             const {navigation} = this.props
         return (
-            <View style={ styles.body }>
+        console.log(navigation.getParam('toggle')),
+            <View style={ this.state.toggle ? styles.body : styles.bodyLight}>
                 <AllLists lists={ this.state.lists } tasks={navigation.getParam('tasks')} action={this.handler} boardId={ navigation.getParam('boardId') } navigation={ this.props.navigation }/>
                 <AddModal
                 isOpen={this.state.isAddModalOpen}

@@ -3,9 +3,9 @@ import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
     body: {
         backgroundColor: '#181A24',
-        flex: 1,
-        flexDirection:'column',
-        justifyContent:'center'
+    },
+    bodyLight: {
+        backgroundColor: 'white'
     },
     header: {
         textAlign: 'center',
@@ -15,19 +15,34 @@ export default StyleSheet.create({
         textDecorationLine: 'underline'
     },
     text: {
-        textAlign: 'center',
+        textAlign: 'left',
         fontSize: 20,
-        color: 'white'
+        color: 'white',
     },
-
+    textLight: {
+        textAlign: 'left',
+        fontSize: 20,
+        color: 'black',
+    },
     boards: {
-        borderWidth: 0.5,
-        borderColor: 'black',
-        backgroundColor: '#272936',
+        borderBottomWidth: 0.5,
+        borderBottomColor: 'white',
+        backgroundColor: '#181A24',
         paddingTop:20,
         paddingBottom:20,
-        paddingLeft:100,
-        paddingRight:100, 
+        marginLeft: 15,
+        marginRight: 15,
+        
+    },
+    boardsLight: {
+        marginBottom: 0.5,
+        borderBottomWidth: 0.2,
+        borderBottomColor: 'black',
+        backgroundColor: 'white',
+        paddingTop:20,
+        paddingBottom:20,
+        marginLeft: 15,
+        marginRight: 15,
         
     }
 });
