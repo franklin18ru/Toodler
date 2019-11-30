@@ -22,7 +22,7 @@ class Lists extends Component {
             newListColor:'red',
         }
 
-        setModalOpen = (isOpen) => (
+        setModalListOpen = (isOpen) => (
             this.setState({isAddModalOpen: isOpen})
           )
         bn = ()=>{return this.state.boardName}
@@ -39,7 +39,7 @@ class Lists extends Component {
           <Icon name='ios-add' type='ionicon' color='white' size={40} style={styles.plus}
               onPress={ () => 
                 // {Boards.add = true},
-                setModalOpen(true)
+                setModalListOpen(true)
             }/>
         ),
         
@@ -127,21 +127,21 @@ class Lists extends Component {
         
         render(){  
             const {navigation} = this.props
+            
         return (
+            
             <View style={ styles.body }>
                 <AllLists lists={ this.state.lists } tasks={navigation.getParam('tasks')} action={this.handler} boardId={ navigation.getParam('boardId') } navigation={ this.props.navigation }/>
-                <AddModal
-                isOpen={this.state.isAddModalOpen}
-                closeModal={() => this.setState({ isAddModalOpen: false})}
-                inputHandler={(name,value)=>{ this.inputHandler(name,value)}}
-                action={(color) => { this.create(color) }}
-                color={this.state.newListColor}
-                selectedColor={()=>{return this.state.newListColor}}
-                // fix when this component is unmounted
-                changeColor ={(color)=>{return this.changeColor(color)}}
-            />
+                <AddModal 
+                  isOpen={this.state.isAddModalOpen}
+                  closeModal={() => this.setState({ isAddModalOpen: false})}
+                  inputHandler={(name,value)=>{ this.inputHandler(name,value)}}
+                  action={(color) => { this.create(color) }}
+                  color={this.state.newListColor}
+                  selectedColor={this.state.newListColor}
+                  changeColor ={(color)=>{ this.setState({newListColor:color})}} 
+                />
             </View>
-        
             );
         }
         }

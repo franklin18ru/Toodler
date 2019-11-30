@@ -39,8 +39,8 @@ render() {
          
         ]}
         >
-          <TouchableHighlight onPress={() => this.props.navigation.navigate('Tasks', { listId: list.id , tasks: this.props.tasks})}>
-            <List id={ list.id } name ={ list.name } />
+          <TouchableHighlight onPress={() => this.props.navigation.navigate('Tasks', { listId: list.id , listName: list.name, tasks: this.props.tasks})}>
+            <List id={ list.id } color={list.color} name ={ list.name } />
           </TouchableHighlight>
           </Swipeout>
           </React.Fragment>

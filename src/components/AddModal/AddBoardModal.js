@@ -26,10 +26,10 @@ const AddModal = ({ isOpen, closeModal, action, name, photo, takePhoto, inputHan
         />
         <Icon 
             name='ios-camera' color='#181A24' type='ionicon' reverse 
-            onPress={()=>{ photo = takePhoto() }}
+            onPress={()=>{ takePhoto() }}
 
         />
-        <Button onPress={()=>{action(photo)}} title="Create"></Button>
+        <Button onPress={()=>{action()}} title="Create"></Button>
     </View>
 
     </NativeModal>

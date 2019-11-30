@@ -33,7 +33,7 @@ class Boards extends Component {
     }
     
 
-    setModalOpen = (isOpen) => (
+    setModalBoardOpen = (isOpen) => (
       this.setState({isAddModalOpen: isOpen})
     )
   }
@@ -48,7 +48,7 @@ class Boards extends Component {
       <Icon name='ios-add' type='ionicon' color='white' size={40} style={styles.plus}
           onPress={ () => 
             // {Boards.add = true},
-            setModalOpen(true)
+            setModalBoardOpen(true)
         }/>
     ),
     
@@ -69,12 +69,15 @@ class Boards extends Component {
     
   }
 
-  async getThumbnail(){
-    const photo = await takePhoto();
-    this.setState({'newBoardPhoto':photo});
-    return photo
+  getThumbnail(){
+    this.get();
   }
 
+
+  async get(){
+    const photo = await takePhoto();
+    this.setState({'newBoardPhoto':photo});
+  }
     getHighestId(){
       let id = -1;
       const boards = this.state.boards;
@@ -86,8 +89,9 @@ class Boards extends Component {
       }
       return id
     }
-    create(photo){
+    create(){
       const name = this.state.newBoardName;
+      const photo = this.state.newBoardPhoto;
       let boards = this.state.boards;
       const nextId = this.getHighestId()+1;
       const newBoard = {
@@ -161,7 +165,7 @@ class Boards extends Component {
     
     render(){ 
       const scrollEnabled = this.state.screenHeight > height; 
-      const {isAddModalOpen} = this.state
+      
       return (
         <SafeAreaView style={styles.container}>
 
@@ -174,17 +178,18 @@ class Boards extends Component {
         >
           <View style={ styles.body }>
               <AllBoards boards={this.state.boards} lists={this.state.lists} tasks={this.state.tasks} action={this.handler} navigation = {this.props.navigation}/>
+              
           </View>
 
           </ScrollView>
           <AddModal
-            isOpen={this.state.isAddModalOpen}
-            closeModal={() => this.setState({ isAddModalOpen: false})}
-            action={(photo) => { this.create(photo) }}
-            name={this.state.newBoardName}
-            photo={this.state.newBoardPhoto}
-            takePhoto={()=>{ return this.getThumbnail() }}
-            inputHandler={(name,value)=>{ this.inputHandler(name,value)}}
+                isOpen={this.state.isAddModalOpen}
+                closeModal={() => this.setState({ isAddModalOpen: false})}
+                action={(photo) => { this.create(photo) }}
+                name={this.state.newBoardName}
+                photo={this.state.newBoardPhoto}
+                takePhoto={()=>{ this.getThumbnail() }}
+                inputHandler={(name,value)=>{ this.inputHandler(name,value)}}
             />
       </SafeAreaView>
         );

@@ -8,7 +8,7 @@ import styles from './styles';
 
 
 
-const AddModal = ({ isOpen, closeModal, children})=> (
+const AddModal = ({ isOpen, closeModal, inputHandler, action, children})=> (
     <NativeModal
         isVisible={isOpen}
         hasBackdrop
@@ -23,10 +23,17 @@ const AddModal = ({ isOpen, closeModal, children})=> (
             autoCapitalize='sentences'
             autoCompleteType='name'
             
-            onChangeText={ text => text }
+            onChangeText={ text => inputHandler('newTaskName',text) }
         />
-        {/* inputHandler('newTaskName',text) */}
-        <Button onPress={()=>{}} title="Create"></Button>
+        <TextInput style={ styles.textInput }
+            placeholder='Enter description here'
+            autoCapitalize='sentences'
+            autoCompleteType='name'
+            
+            onChangeText={ text => inputHandler('newTaskdescripition',text) }
+        />
+        {/*  */}
+        <Button onPress={()=>{action()}} title="Create"></Button>
     </View>
 
     </NativeModal>
