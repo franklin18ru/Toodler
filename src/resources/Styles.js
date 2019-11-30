@@ -7,6 +7,12 @@ export default StyleSheet.create({
         flexDirection:'column',
         
     },
+    bodyLight: {
+        backgroundColor: 'white',
+        flex: 1,
+        flexDirection:'column',
+        
+    },
     container: {
         flex: 1,
     },
@@ -21,8 +27,9 @@ export default StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         fontSize: 20,
-        color: "#ffff"
+        color: "#181A24"
     },
+    
     toodler: {
         fontWeight: 'bold',
         fontSize: 40,
@@ -34,7 +41,7 @@ export default StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 40,
         textAlign: 'center',
-        color: '#181A24',
+        color: '#36394A',
     },
     bodyFrontPage: {
         paddingBottom:200,
@@ -46,7 +53,7 @@ export default StyleSheet.create({
     },
     bodyFrontPageLight: {
         paddingBottom:200,
-        backgroundColor: '#fffcf2',
+        backgroundColor: 'white',
         flex: 1,
         flexDirection:'column',
         justifyContent:'center',

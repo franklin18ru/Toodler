@@ -31,7 +31,7 @@ class Home extends Component {
                 <Button 
                 title='Go to boards' 
                 type='outline' 
-                onPress={()=> this.props.navigation.navigate('Boards', this.toggle)}/>
+                onPress={()=> this.props.navigation.navigate('Boards', {toggle: this.state.toggle})}/>
                 <Text style={ this.state.toggle ? styles.switchText : styles.switchTextLight}>{this.state.switchValue? 'Light Mode' : 'Dark Mode'}</Text>
                 <Switch
                     title={this.state.switchValue?'Light Mode':'Dark Mode'}

@@ -10,6 +10,9 @@ class AllLists extends Component {
   
 constructor(props){
   super(props);
+  this.state= {
+    toggle: this.props.navigation.getParam('toggle'),
+  }
 }
 
 render() {
@@ -38,9 +41,11 @@ render() {
           }
          
         ]}
+        
         >
+          
           <TouchableHighlight onPress={() => this.props.navigation.navigate('Tasks', { listId: list.id , tasks: this.props.tasks})}>
-            <List id={ list.id } name ={ list.name } />
+            <List id={ list.id } name ={ list.name } toggle={this.props.navigation.getParam('toggle')}/>
           </TouchableHighlight>
           </Swipeout>
           </React.Fragment>
