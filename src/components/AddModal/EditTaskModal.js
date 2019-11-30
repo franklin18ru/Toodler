@@ -7,7 +7,7 @@ import { Icon } from 'react-native-elements';
 
 
 
-const AddModal = ({ isOpen, closeModal, currentList, allLists, children})=> (
+const AddModal = ({ isOpen, closeModal, currentList, allLists, changeList, action, children})=> (
     <NativeModal
         isVisible={isOpen}
         hasBackdrop
@@ -17,22 +17,24 @@ const AddModal = ({ isOpen, closeModal, currentList, allLists, children})=> (
         style={styles.modal}
     >
     <View style={styles.body}>
-        <Text>{currentList}</Text>
+        
         {/* add picker */}
         <Picker
-            // selectedValue={currentList}
-            style={{height: 50, width: 100}}
-            // onValueChange={(itemValue, itemIndex) =>
-            //     changeList
-            // }
+            selectedValue={currentList()}
+            style={{height: 100, width: 250}}
+            onValueChange={(itemValue, itemIndex) =>{
+                
+                changeList(itemValue['name'],itemValue['id']);
+            }}
         >
             { allLists.map(list =>{
                 return(
-                    <Picker.Item key={list.id} label={list.name} value={list.name} />
+                    <Picker.Item key={list.id} label={list.name} value={{id:list.id,name:list.name}} />
                 )
             })}
             
         </Picker>
+        <Button style={styles.buttonStyle} onPress={()=>{action()}} title="Change"></Button>
     </View>
 
     </NativeModal>

@@ -16,7 +16,9 @@ constructor(props){
     tasks: this.props.tasks,
     isModalEditOpen: false,
     list:this.props.listName,
-    lists:this.props.lists
+    lists:this.props.lists,
+    taskId: -1,
+    listId: -1
   }
 }
 handler(id){
@@ -34,6 +36,18 @@ openEditModal(){
   this.setState({isModalEditOpen: true})
 }
 
+move(){
+  let tasks = this.state.tasks;
+  for(var i =0; i<tasks.length; i++){
+    obj = tasks[i];
+    if(obj.id == this.state.taskId)
+    {
+      obj.listId = this.state.listId;
+      break
+    }
+  }
+  this.setState({tasks:tasks, isModalEditOpen: false});
+}
 
 
 render() {
@@ -48,6 +62,7 @@ render() {
               right= {[
                 {
                   onPress: ()=>{
+                    this.setState({taskId:task.id})
                     this.openEditModal()
                   },
                   text:'Edit',
@@ -67,9 +82,10 @@ render() {
       <AddModal 
         isOpen={this.state.isModalEditOpen}
         closeModal={() => this.setState({ isModalEditOpen: false})}
-        currentList={this.state.list}
+        currentList={()=>{return this.state.list}}
         allLists={this.state.lists}
-        
+        changeList={(name,id)=>{this.setState({list:name,listId:id})}}
+        action={()=>{this.move()}}
       />
     </View>
   );
