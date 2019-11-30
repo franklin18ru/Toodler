@@ -20,7 +20,16 @@ export default StyleSheet.create({
         color: 'black',
         paddingTop:10
     },
-
+    text: {
+        textAlign: 'left',
+        fontSize: 20,
+        color: 'white',
+    },
+    textLight: {
+        textAlign: 'left',
+        fontSize: 20,
+        color: 'black',
+    },
     tasks: {
         alignItems: 'flex-start',
         flexDirection: 'column',
