@@ -44,7 +44,7 @@ render() {
         
         >
           
-          <TouchableHighlight onPress={() => this.props.navigation.navigate('Tasks', { listId: list.id , tasks: this.props.tasks})}>
+          <TouchableHighlight onPress={() => this.props.navigation.navigate('Tasks', { listId: list.id , tasks: this.props.tasks, toggle: this.state.toggle})}>
             <List id={ list.id } name ={ list.name } toggle={this.props.navigation.getParam('toggle')}/>
           </TouchableHighlight>
           </Swipeout>

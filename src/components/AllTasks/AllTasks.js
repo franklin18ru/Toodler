@@ -49,7 +49,7 @@ render() {
               
               ]}
               >
-            <Task id={ task.id } name ={ task.name } action={this.handler} description={task.description} isFinished={task.isFinished}/>
+            <Task id={ task.id } name ={ task.name } action={this.handler} description={task.description} isFinished={task.isFinished} toggle={this.props.navigation.getParam('toggle')}/>
            </Swipeout>
           </React.Fragment>
           )
