@@ -23,7 +23,7 @@ class Boards extends Component {
       screenHeight: 0,
       isAddModalOpen: false,
       newBoardName: '',
-      newBoardPhoto: '',
+      newBoardPhoto: 'https://www.northcliftonestates.ca/wp-content/uploads/2019/06/placeholder-images-image_large.png',
       toggle: navigation.getParam('toggle'),
     }
     
@@ -166,7 +166,7 @@ class Boards extends Component {
 
     
     render(){ 
-      const scrollEnabled = this.state.screenHeight > height; 
+      const scrollEnabled = this.state.screenHeight > height+100; 
       
       return (
         <SafeAreaView style={styles.container, {flex: 1, backgroundColor: this.state.toggle ? '#181A24' : 'white' }}>

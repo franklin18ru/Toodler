@@ -1,6 +1,6 @@
 import React from 'react';
 import NativeModal from 'react-native-modal';
-import { Text, View, Button, TextInput, Image  } from 'react-native';
+import { Text, View, Button, TextInput, Image, KeyboardAvoidingView  } from 'react-native';
 import styles from './styles';
 import { Icon } from 'react-native-elements';
 
@@ -16,8 +16,7 @@ const AddModal = ({ isOpen, closeModal, action, name, photo, takePhoto, inputHan
         swipeDirection={['up', 'down']}
         style={styles.modal}
     >
-    <View style={styles.body}>
-        
+    <KeyboardAvoidingView style={styles.body} behavior="padding">
             <TextInput style={ styles.textInput }
                 placeholder='Enter board name here'
                 autoCapitalize='sentences'
@@ -31,9 +30,9 @@ const AddModal = ({ isOpen, closeModal, action, name, photo, takePhoto, inputHan
                 onPress={()=>{ takePhoto() }}
             />
         
-            <Button onPress={()=>{action()}} title="Create"></Button>
+            <Button style={styles.buttonStyle} onPress={()=>{action()}} title="Create"></Button>
         
-    </View>
+    </KeyboardAvoidingView>
 
     </NativeModal>
 
